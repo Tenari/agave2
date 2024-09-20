@@ -6,7 +6,7 @@ use {
     log::*,
     reqwest::{
         self,
-        header::{self, CONTENT_TYPE, RETRY_AFTER},
+        header::{self, CONTENT_TYPE, RETRY_AFTER, ORIGIN},
         StatusCode,
     },
     solana_rpc_client_api::{
@@ -17,6 +17,7 @@ use {
         response::RpcSimulateTransactionResult,
     },
     std::{
+        env,
         sync::{
             atomic::{AtomicU64, Ordering},
             Arc, RwLock,
@@ -152,6 +153,7 @@ impl RpcSender for HttpSender {
                 client
                     .post(&self.url)
                     .header(CONTENT_TYPE, "application/json")
+                    .header(ORIGIN, &env::var("ALCHEMY_ORIGIN").expect("missing ALCHEMY_ORIGIN env var"))
                     .body(request_json)
                     .send()
                     .await
