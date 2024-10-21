@@ -11,7 +11,7 @@ edition = { workspace = true }
 
 [dependencies]
 bincode = { workspace = true }
-blake3 = { workspace = true }
+blake3 = { workspace = true, features = ["std", "traits-preview"] }
 bv = { workspace = true, features = ["serde"] }
 bytemuck = { workspace = true }
 bytemuck_derive = { workspace = true }
