@@ -168,7 +168,7 @@ backoff = "0.4.0"
 base64 = "0.22.1"
 bincode = "1.3.3"
 bitflags = { version = "2.5.0" }
-blake3 = "1.5.4"
+blake3 = { version = "1.5.4", features = ["traits-preview"] }
 borsh = { version = "1.5.1", features = ["derive", "unstable__schema"] }
 bs58 = "0.5.1"
 bv = "0.11.1"
